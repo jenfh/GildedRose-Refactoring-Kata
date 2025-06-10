@@ -32,4 +32,13 @@ public class GildedRoseTest
         app.UpdateQuality();
         Assert.That(items[0].Quality, Is.EqualTo(0));
     }
+
+    [Test]
+    public void StandardItem_Decreasing_SellIn_Test()
+    {
+        var items = new List<Item> { new Item { Name = "Elixir of the Mongoose", SellIn = 10, Quality = 20 } };
+        GildedRose app = new GildedRose(items);
+        app.UpdateQuality();
+        Assert.That(items[0].SellIn, Is.EqualTo(9));
+    }
 }
